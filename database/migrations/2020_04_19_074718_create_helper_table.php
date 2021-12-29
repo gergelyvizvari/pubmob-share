@@ -20,7 +20,7 @@ class CreateHelperTable extends Migration
             $table->string('type', 255);
             $table->text('container_title');
             $table->string('ISSN', 60);
-            $table->integer('issue');
+            $table->string('issue');
             $table->string('language', 60);
             $table->text('note');
             $table->string('page', 60);

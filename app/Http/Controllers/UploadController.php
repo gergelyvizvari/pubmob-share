@@ -23,8 +23,9 @@ class UploadController extends Controller
     {
         if ($request->hasFile('file')) {
             $extension = $request->file('file')->getClientOriginalExtension();
+            $containsExtension = in_array(strtolower($extension), ['json']);
 
-            if (in_array(strtolower($extension), ['json'])) {
+            if ($containsExtension) {
 
                 $originalfileName = $request->file('file')->getClientOriginalName();
                 $fileName         = Str::replaceLast('.json', '', $originalfileName);
@@ -79,7 +80,7 @@ class UploadController extends Controller
                 'url'                  => Arr::get($record, 'URL', ''),
                 'source'               => Arr::get($record, 'source', ''),
                 'issn'                 => Arr::get($record, 'ISSN', ''),
-                'issue'                => (int) Arr::get($record, 'issue', 0),
+                'issue'                => Arr::get($record, 'issue', 0),
                 'language'             => Arr::get($record, 'language', ''),
                 'note'                 => Arr::get($record, 'note', ''),
                 'page'                 => Arr::get($record, 'page', ''),
@@ -108,6 +109,12 @@ class UploadController extends Controller
         Data::insert($inserts);
         DataHelper::insert($insertHelpers);
     }
+
+    /**
+     *
+     * @param mixed $data
+     * @return mixed
+     */
     protected function sluggify($data)
     {
         $jsons   = ['authors'];
