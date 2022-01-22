@@ -66,7 +66,6 @@ class UploadController extends Controller
 
             $match = $previousRecordUidStrs->where('id_str', $record['id'])->first();
 
-            $issuedDate = null;
             $issued     = Arr::get($record, 'issued.date-parts.0.0', null);
 
             $data = [
