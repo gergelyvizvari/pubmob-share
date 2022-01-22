@@ -80,7 +80,7 @@ class UploadController extends Controller
                 'url'                  => Arr::get($record, 'URL', ''),
                 'source'               => Arr::get($record, 'source', ''),
                 'issn'                 => Arr::get($record, 'ISSN', ''),
-                'issue'                => Arr::get($record, 'issue', 0),
+                'issue'                => Arr::get($record, 'issue', ''),
                 'language'             => Arr::get($record, 'language', ''),
                 'note'                 => Arr::get($record, 'note', ''),
                 'page'                 => Arr::get($record, 'page', ''),
